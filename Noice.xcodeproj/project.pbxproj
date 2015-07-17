@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4F2399D1B561B2C00EC1E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */; };
+		A4F2399F1B561B2C00EC1E0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F2399E1B561B2C00EC1E0C /* ViewController.swift */; };
+		A4F239A21B561B2C00EC1E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4F239A01B561B2C00EC1E0C /* Main.storyboard */; };
+		A4F239A41B561B2C00EC1E0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4F239A31B561B2C00EC1E0C /* Images.xcassets */; };
+		A4F239A71B561B2C00EC1E0C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F239A51B561B2C00EC1E0C /* LaunchScreen.xib */; };
+		A4F239B31B561B2C00EC1E0C /* NoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F239B21B561B2C00EC1E0C /* NoiceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4F239AD1B561B2C00EC1E0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4F2398F1B561B2C00EC1E0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4F239961B561B2C00EC1E0C;
+			remoteInfo = Noice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A4F239971B561B2C00EC1E0C /* Noice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F2399B1B561B2C00EC1E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A4F2399E1B561B2C00EC1E0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4F239A11B561B2C00EC1E0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A4F239A31B561B2C00EC1E0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A4F239A61B561B2C00EC1E0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A4F239AC1B561B2C00EC1E0C /* NoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F239B11B561B2C00EC1E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4F239B21B561B2C00EC1E0C /* NoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiceTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4F239941B561B2C00EC1E0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4F239A91B561B2C00EC1E0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4F2398E1B561B2C00EC1E0C = {
+			isa = PBXGroup;
+			children = (
+				A4F239991B561B2C00EC1E0C /* Noice */,
+				A4F239AF1B561B2C00EC1E0C /* NoiceTests */,
+				A4F239981B561B2C00EC1E0C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4F239981B561B2C00EC1E0C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4F239971B561B2C00EC1E0C /* Noice.app */,
+				A4F239AC1B561B2C00EC1E0C /* NoiceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4F239991B561B2C00EC1E0C /* Noice */ = {
+			isa = PBXGroup;
+			children = (
+				A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */,
+				A4F2399E1B561B2C00EC1E0C /* ViewController.swift */,
+				A4F239A01B561B2C00EC1E0C /* Main.storyboard */,
+				A4F239A31B561B2C00EC1E0C /* Images.xcassets */,
+				A4F239A51B561B2C00EC1E0C /* LaunchScreen.xib */,
+				A4F2399A1B561B2C00EC1E0C /* Supporting Files */,
+			);
+			path = Noice;
+			sourceTree = "<group>";
+		};
+		A4F2399A1B561B2C00EC1E0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4F2399B1B561B2C00EC1E0C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4F239AF1B561B2C00EC1E0C /* NoiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4F239B21B561B2C00EC1E0C /* NoiceTests.swift */,
+				A4F239B01B561B2C00EC1E0C /* Supporting Files */,
+			);
+			path = NoiceTests;
+			sourceTree = "<group>";
+		};
+		A4F239B01B561B2C00EC1E0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4F239B11B561B2C00EC1E0C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4F239961B561B2C00EC1E0C /* Noice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4F239B61B561B2C00EC1E0C /* Build configuration list for PBXNativeTarget "Noice" */;
+			buildPhases = (
+				A4F239931B561B2C00EC1E0C /* Sources */,
+				A4F239941B561B2C00EC1E0C /* Frameworks */,
+				A4F239951B561B2C00EC1E0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Noice;
+			productName = Noice;
+			productReference = A4F239971B561B2C00EC1E0C /* Noice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A4F239AB1B561B2C00EC1E0C /* NoiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4F239B91B561B2C00EC1E0C /* Build configuration list for PBXNativeTarget "NoiceTests" */;
+			buildPhases = (
+				A4F239A81B561B2C00EC1E0C /* Sources */,
+				A4F239A91B561B2C00EC1E0C /* Frameworks */,
+				A4F239AA1B561B2C00EC1E0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4F239AE1B561B2C00EC1E0C /* PBXTargetDependency */,
+			);
+			name = NoiceTests;
+			productName = NoiceTests;
+			productReference = A4F239AC1B561B2C00EC1E0C /* NoiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4F2398F1B561B2C00EC1E0C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Joshua Lee";
+				TargetAttributes = {
+					A4F239961B561B2C00EC1E0C = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					A4F239AB1B561B2C00EC1E0C = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = A4F239961B561B2C00EC1E0C;
+					};
+				};
+			};
+			buildConfigurationList = A4F239921B561B2C00EC1E0C /* Build configuration list for PBXProject "Noice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A4F2398E1B561B2C00EC1E0C;
+			productRefGroup = A4F239981B561B2C00EC1E0C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4F239961B561B2C00EC1E0C /* Noice */,
+				A4F239AB1B561B2C00EC1E0C /* NoiceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4F239951B561B2C00EC1E0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F239A21B561B2C00EC1E0C /* Main.storyboard in Resources */,
+				A4F239A71B561B2C00EC1E0C /* LaunchScreen.xib in Resources */,
+				A4F239A41B561B2C00EC1E0C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4F239AA1B561B2C00EC1E0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4F239931B561B2C00EC1E0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F2399F1B561B2C00EC1E0C /* ViewController.swift in Sources */,
+				A4F2399D1B561B2C00EC1E0C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4F239A81B561B2C00EC1E0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F239B31B561B2C00EC1E0C /* NoiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4F239AE1B561B2C00EC1E0C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4F239961B561B2C00EC1E0C /* Noice */;
+			targetProxy = A4F239AD1B561B2C00EC1E0C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A4F239A01B561B2C00EC1E0C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4F239A11B561B2C00EC1E0C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A4F239A51B561B2C00EC1E0C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4F239A61B561B2C00EC1E0C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4F239B41B561B2C00EC1E0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A4F239B51B561B2C00EC1E0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4F239B71B561B2C00EC1E0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Noice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A4F239B81B561B2C00EC1E0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Noice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A4F239BA1B561B2C00EC1E0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoiceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noice.app/Noice";
+			};
+			name = Debug;
+		};
+		A4F239BB1B561B2C00EC1E0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoiceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noice.app/Noice";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4F239921B561B2C00EC1E0C /* Build configuration list for PBXProject "Noice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4F239B41B561B2C00EC1E0C /* Debug */,
+				A4F239B51B561B2C00EC1E0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4F239B61B561B2C00EC1E0C /* Build configuration list for PBXNativeTarget "Noice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4F239B71B561B2C00EC1E0C /* Debug */,
+				A4F239B81B561B2C00EC1E0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A4F239B91B561B2C00EC1E0C /* Build configuration list for PBXNativeTarget "NoiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4F239BA1B561B2C00EC1E0C /* Debug */,
+				A4F239BB1B561B2C00EC1E0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4F2398F1B561B2C00EC1E0C /* Project object */;
+}
