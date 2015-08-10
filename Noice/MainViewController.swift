@@ -11,6 +11,7 @@ import AVFoundation
 import Parse
 
 class MainViewController: UIViewController {
+    var videoObject : PFObject!
     @IBOutlet weak var videoPlayer: UIWebView!
     @IBOutlet weak var videoTitle: UILabel!
     @IBOutlet weak var videoDescription: UITextView!
@@ -20,13 +21,35 @@ class MainViewController: UIViewController {
     @IBOutlet weak var numberOfNoice: UILabel!
     @IBOutlet weak var numberOfMeh: UILabel!
     @IBOutlet weak var numberOfBlab: UILabel!
-
+    
     @IBAction func hahaButtonDidTouch(sender: UIButton!) {
-        sender.selected = !sender.selected
-        self.blabButton.selected = sender.selected
+        //sender.selected = !sender.selected
+        //self.blabButton.selected = true
+        if self.hahaButton.selected == false {
+            self.hahaButton.selected = true
+            self.getNumberOfVotesWithVideo(videoObject, completion: {(numberOfNoice: Int, numberOfMeh: Int) -> Void in
+                self.numberOfNoice.text = String("\(numberOfNoice+1) noice")
+                var vote = PFObject(className: "Vote")
+                vote["user"] = PFInstallation.currentInstallation()
+                vote["value"] = (1)
+                vote["video"] = self.videoObject
+                vote.saveInBackground()
+            })
+        }
     }
     @IBAction func mehButtonDidTouch(sender: UIButton!) {
-        sender.selected = !sender.selected
+        //sender.selected = !sender.selected
+        if self.mehButton.selected == false {
+            self.mehButton.selected = true
+            self.getNumberOfVotesWithVideo(videoObject, completion: {(numberOfNoice: Int, numberOfMeh: Int) -> Void in
+                self.numberOfMeh.text = String("\(numberOfMeh+1) meh")
+                var vote = PFObject(className: "Vote")
+                vote["user"] = PFInstallation.currentInstallation()
+                vote["value"] = (-1)
+                vote["video"] = self.videoObject
+                vote.saveInBackground()
+            })
+        }
     }
     @IBAction func blabButtonDidTouch(sender: UIButton!) {
         sender.selected = true
@@ -34,6 +57,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //this line is here to stop a weird web view crash http://stackoverflow.com/questions/29458788/uiwebview-webthread-exc-bad-access
+        UIView.setAnimationsEnabled(false)
+        
         // Do any additional setup after loading the view, typically from a nib.
         videoTitle.text = ""
         videoDescription.text = ""
@@ -71,8 +98,12 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         var query = PFQuery(className: "Video")
         query.limit = 10
         query.orderByDescending("createdAt")
@@ -80,7 +111,7 @@ class MainViewController: UIViewController {
             if error == nil {
                 if let parseObjects = results as? [PFObject] {
                     if let videoObject = parseObjects.first {
-                        let parseObject = videoObject
+                        self.videoObject = videoObject
                         //get the url and start playing the video
                         let videoUrl : String = videoObject["url"] as! String
                         let urlComponents = NSURLComponents(URL: NSURL(string: videoUrl)!, resolvingAgainstBaseURL: false)
@@ -116,6 +147,7 @@ class MainViewController: UIViewController {
                 }
             }
         }
+
     }
     
     func playYoutubeVideoWithId(videoId: String) {
