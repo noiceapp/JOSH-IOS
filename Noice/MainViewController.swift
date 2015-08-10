@@ -93,48 +93,25 @@ class MainViewController: UIViewController {
                                 }
                             }
                         }
-                        
-                        //get the title and description
+                        //set the title and description
                         self.videoTitle.text = videoObject["title"] as? String
                         self.videoDescription.text = videoObject["description"] as! String
                         
-                        //go fetch voting information
-                        var voteQuery = PFQuery(className: "Vote")
-                        voteQuery.whereKey("video", equalTo: videoObject)
-                        voteQuery.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
-                            if error == nil {
-                                if let parseVoteObjects = results as? [PFObject] {
-                                    var numberOfNoice = 0
-                                    var numberOfMeh = 0
-                                    for parseVoteObject in parseVoteObjects {
-                                        let voteValue : NSNumber = parseVoteObject["value"] as! NSNumber
-                                        if voteValue.integerValue == 1 {
-                                            numberOfNoice++
-                                        }
-                                        else if voteValue.integerValue == -1 {
-                                            numberOfMeh++
-                                        }
-                                    }
-                                    self.numberOfNoice.text = String("\(numberOfNoice) noice")
-                                    self.numberOfMeh.text = String("\(numberOfMeh) meh")
-                                }
+                        self.getNumberOfVotesWithVideo(videoObject, completion: {(numberOfNoice: Int, numberOfMeh: Int) -> Void in
+                            self.numberOfNoice.text = String("\(numberOfNoice) noice")
+                            self.numberOfMeh.text = String("\(numberOfMeh) meh")
+                        })
+                        
+                        self.getNubmerOfShareWithVideo(videoObject, completion: {(numberOfBlab: Int) -> Void in
+                            if numberOfBlab > 0 {
+                                self.numberOfBlab.text = String("\(numberOfBlab) blab")
                             }
-                        }
-                        //go fetch sharing information
-                        var shareQuery = PFQuery(className: "Share")
-                        shareQuery.whereKey("video", equalTo: videoObject)
-                        shareQuery.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
-                            if error == nil {
-                                if let numberOfBlab = results {
-                                    if numberOfBlab.count > 0 {
-                                        self.numberOfBlab.text = String("\(numberOfBlab.count) blab")
-                                    }
-                                    else {
-                                        self.numberOfBlab.text = "Be the first!"
-                                    }
-                                }
+                            else {
+                                self.numberOfBlab.text = "Be the first!"
                             }
-                        }
+                        })
+                        
+                        
                     }
                 }
             }
@@ -145,6 +122,46 @@ class MainViewController: UIViewController {
         let youTubeVideoHTML = "<!DOCTYPE html><html><head><style>body{margin:0px 0px 0px 0px;}</style></head> <body> <div id=\"player\"></div> <script> var tag = document.createElement('script'); tag.src = \"http://www.youtube.com/player_api\"; var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); var player; function onYouTubePlayerAPIReady() { player = new YT.Player('player', { width:'%0.0f', height:'%0.0f', videoId:'%@',playerVars: {playsinline:1}, events: { 'onReady': onPlayerReady, } }); } function onPlayerReady(event) { event.target.playVideo(); } </script> </body> </html>";
         let htmlString = String(format: youTubeVideoHTML, arguments: [videoPlayer.bounds.width, videoPlayer.bounds.height, videoId])
         videoPlayer.loadHTMLString(htmlString, baseURL: NSBundle.mainBundle().resourceURL)
+    }
+    
+    func getNumberOfVotesWithVideo(videoObject: PFObject, completion: (numberOfNoice: Int, nubmerOfMeh: Int) ->())
+    {
+        //go fetch voting information
+        var voteQuery = PFQuery(className: "Vote")
+        voteQuery.whereKey("video", equalTo: videoObject)
+        voteQuery.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let parseVoteObjects = results as? [PFObject] {
+                    var numberOfNoice = 0
+                    var numberOfMeh = 0
+                    for parseVoteObject in parseVoteObjects {
+                        let voteValue : NSNumber = parseVoteObject["value"] as! NSNumber
+                        if voteValue.integerValue == 1 {
+                            numberOfNoice++
+                        }
+                        else if voteValue.integerValue == -1 {
+                            numberOfMeh++
+                        }
+                    }
+                    completion(numberOfNoice: numberOfNoice, nubmerOfMeh: numberOfMeh)
+                }
+            }
+        }
+
+    }
+    
+    func getNubmerOfShareWithVideo(videoObject: PFObject, completion: (numberOfBlab: Int) ->())
+    {
+        //go fetch sharing information
+        var shareQuery = PFQuery(className: "Share")
+        shareQuery.whereKey("video", equalTo: videoObject)
+        shareQuery.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let numberOfBlab = results {
+                    completion(numberOfBlab: numberOfBlab.count)
+                }
+            }
+        }
     }
 }
 
