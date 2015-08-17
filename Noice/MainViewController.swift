@@ -33,9 +33,13 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         if self.hahaButton.selected == false {
             self.hahaButton.selected = true
             self.mehButton.selected = false
+            self.blabButton.hidden = false
+            self.numberOfBlab.hidden = false
             self.getNumberOfVotesWithVideo(videoObject, completion: {(videos: [PFObject], numberOfNoice: Int, numberOfMeh: Int) -> Void in
                 self.numberOfNoice.text = String("\(numberOfNoice+1) noice")
-                self.numberOfMeh.text = String("\(numberOfMeh-1) meh")
+                if numberOfMeh > 0 {
+                    self.numberOfMeh.text = String("\(numberOfMeh-1) meh")
+                }
                 self.incrementVote()
                 self.removeDecrementVote()
             })
@@ -46,9 +50,13 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         if self.mehButton.selected == false {
             self.mehButton.selected = true
             self.hahaButton.selected = false
+            self.blabButton.hidden = true
+            self.numberOfBlab.hidden = true
             self.getNumberOfVotesWithVideo(videoObject, completion: {(videos: [PFObject], numberOfNoice: Int, numberOfMeh: Int) -> Void in
                 self.numberOfMeh.text = String("\(numberOfMeh+1) meh")
-                self.numberOfNoice.text = String("\(numberOfNoice-1) noice")
+                if numberOfNoice > 0 {
+                    self.numberOfNoice.text = String("\(numberOfNoice-1) noice")
+                }
                 self.decrementVote()
                 self.removeIncrementVote()
             })
@@ -282,16 +290,22 @@ class MainViewController: UIViewController, UIWebViewDelegate {
                     if (parseObject["value"]?.integerValue == 1) {
                         self.hahaButton.selected = true
                         self.mehButton.selected = false
+                        self.blabButton.hidden = false
+                        self.numberOfBlab.hidden = false
                     }
                     else {
                         self.hahaButton.selected = false
                         self.mehButton.selected = true
+                        self.blabButton.hidden = true
+                        self.numberOfBlab.hidden = true
                     }
                 }
             }
             if (hasFoundUser == false) {
                 self.hahaButton.selected = false
                 self.mehButton.selected = false
+                self.blabButton.hidden = true
+                self.numberOfBlab.hidden = true
             }
         })
         
