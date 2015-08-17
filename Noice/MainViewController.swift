@@ -80,6 +80,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         var query = PFQuery(className: "Vote")
         query.whereKey("user", equalTo: PFInstallation.currentInstallation())
         query.whereKey("value", equalTo: (1))
+        query.whereKey("video", equalTo: self.videoObject)
         query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let parseObjects = results as? [PFObject] {
@@ -105,6 +106,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         var query = PFQuery(className: "Vote")
         query.whereKey("user", equalTo: PFInstallation.currentInstallation())
         query.whereKey("value", equalTo: (-1))
+        query.whereKey("video", equalTo: self.videoObject)
         query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let parseObjects = results as? [PFObject] {
