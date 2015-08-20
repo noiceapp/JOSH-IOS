@@ -14,9 +14,8 @@ import Social
 class MainViewController: UIViewController, UIWebViewDelegate {
     var videoObject : PFObject!
     var videoObjects : [PFObject]!
-    var currentVideoIndex : Int!
     var pageCount : Int!
-    let pageSize : Int = 10
+    let pageSize : Int = 50
     var hasMoreVideo : Bool!
     @IBOutlet weak var videoPlayer: UIWebView!
     @IBOutlet weak var videoTitle: UILabel!
@@ -171,7 +170,6 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         UIView.setAnimationsEnabled(false)
         
         pageCount = 0
-        currentVideoIndex = 0
         
         // Do any additional setup after loading the view, typically from a nib.
         videoTitle.text = ""
@@ -213,15 +211,21 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         videoPlayer.mediaPlaybackRequiresUserAction = false
         videoPlayer.scrollView.scrollEnabled = false
         
+        videoDescription.textColor = UIColor(red: 97.0/256.0, green: 97.0/256.0, blue: 97.0/256.0, alpha: 1.0)
+        
+        //status bar background
+        var statusBarView = UIView()
+        statusBarView.frame = CGRectMake(0,0,view.bounds.size.width,20)
+        statusBarView.backgroundColor = UIColor(red: 253.0/256.0, green: 210.0/256.0, blue: 119.0/256.0, alpha: 1.0)
+        view.addSubview(statusBarView)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "nextVideo")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeRight)
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "prevVideo")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(swipeLeft)
+        fetchVideo()
     }
     
     func didRotate()
@@ -242,7 +246,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchVideo()
+        
+        
+        
     }
     
     func playYoutubeVideoWithId(videoId: String) {
@@ -382,9 +388,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
                         self.hasMoreVideo = false
                     }
                     self.videoObjects.extend(parseObjects)
-                    if self.currentVideoIndex < self.videoObjects.count {
-                        var video = self.videoObjects[self.currentVideoIndex]
-                        self.configureWithVideo(video)
+                    if self.videoObjects.count > 0 {
+                        self.configureWithVideo(self.videoObjects.first!)
+                        self.videoObjects.removeAtIndex(0)
                     }
                 }
             }
@@ -392,25 +398,32 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     }
     
     func nextVideo() {
-        currentVideoIndex = currentVideoIndex + 1
-        if currentVideoIndex > videoObjects.count - 1 && hasMoreVideo == true {
+        if (hasMoreVideo == false && videoObjects.count == 0) {
+            let alert = UIAlertController(title: nil, message: "Come back later for more Noice!", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        let lower : UInt32 = 0
+        let upper : UInt32 = UInt32(videoObjects.count)
+        let randomNumber : Int = Int(arc4random_uniform(upper - lower) + lower)
+        
+        if videoObjects.count == 0 && hasMoreVideo == true {
             pageCount = pageCount + 1
             fetchVideo()
         }
         else {
-            if currentVideoIndex < videoObjects.count {
-                var video = videoObjects[currentVideoIndex]
+            if randomNumber < videoObjects.count {
+                var video = videoObjects[randomNumber]
                 configureWithVideo(video)
+                videoObjects.removeAtIndex(randomNumber)
             }
         }
-    }
-    
-    func prevVideo() {
-        if currentVideoIndex > 0 {
-            currentVideoIndex = currentVideoIndex - 1
-            var video = videoObjects[currentVideoIndex]
-            configureWithVideo(video)
-        }
+        
+        
     }
 }
 
