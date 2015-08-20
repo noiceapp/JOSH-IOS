@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Parse
+import Social
 
 class MainViewController: UIViewController, UIWebViewDelegate {
     var videoObject : PFObject!
@@ -46,7 +47,6 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         }
     }
     @IBAction func mehButtonDidTouch(sender: UIButton!) {
-        //sender.selected = !sender.selected
         if self.mehButton.selected == false {
             self.mehButton.selected = true
             self.hahaButton.selected = false
@@ -63,7 +63,53 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         }
     }
     @IBAction func blabButtonDidTouch(sender: UIButton!) {
-        sender.selected = true
+        blabButton.selected = true
+
+        let optionMenu = UIAlertController(title: nil, message: "Make it viral", preferredStyle: .ActionSheet)
+        let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler:{(alert: UIAlertAction!) -> Void in
+            var content = FBSDKShareLinkContent()
+            var videoURL = NSURL(string: self.videoObject["url"] as! String)
+            content.contentURL = videoURL
+            FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+            self.shareVideo()
+        })
+        
+        let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: {(alert: UIAlertAction!) -> Void in
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+                var twitterSheet : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                var videoURL = NSURL(string: self.videoObject["url"] as! String)
+                twitterSheet.addURL(videoURL)
+                self.presentViewController(twitterSheet, animated: true, completion: nil)
+                self.shareVideo()
+            }
+            else {
+                var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(facebookAction)
+        optionMenu.addAction(twitterAction)
+        optionMenu.addAction(cancelAction)
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    func shareVideo()
+    {
+        self.getNubmerOfShareWithVideo(videoObject, completion: {(numberOfBlab: Int) -> Void in
+            self.numberOfBlab.text = String("\(numberOfBlab+1) blab")
+            if self.videoObject != nil {
+                var shareObject = PFObject(className: "Share")
+                shareObject["user"] = PFInstallation.currentInstallation()
+                shareObject["video"] = self.videoObject
+                shareObject.saveInBackground()
+            }
+        })
     }
     
     func incrementVote()

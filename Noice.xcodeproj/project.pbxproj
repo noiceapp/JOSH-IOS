@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C0770A81B781DBD005399E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0770A71B781DBD005399E9 /* AudioToolbox.framework */; };
+		8C2D459F1B859B8000CA9C5A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2D459E1B859B8000CA9C5A /* FBSDKCoreKit.framework */; };
+		8C2D45A11B859B8800CA9C5A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2D45A01B859B8800CA9C5A /* FBSDKShareKit.framework */; };
 		8C9A0FA21B663481006F5A81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9A0FA11B663481006F5A81 /* AVFoundation.framework */; };
 		8CA0D97D1B781E2500E91AC9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA0D97C1B781E2500E91AC9 /* CFNetwork.framework */; };
 		8CA0D97F1B781E2C00E91AC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA0D97E1B781E2C00E91AC9 /* CoreGraphics.framework */; };
@@ -42,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		8C0770A71B781DBD005399E9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8C2D459E1B859B8000CA9C5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		8C2D45A01B859B8800CA9C5A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		8C2D45AD1B85A4B200CA9C5A /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		8C9A0FA11B663481006F5A81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8CA0D97C1B781E2500E91AC9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8CA0D97E1B781E2C00E91AC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +80,7 @@
 			files = (
 				8CA0D9911B781EAF00E91AC9 /* Social.framework in Frameworks */,
 				8CA0D98F1B781EA900E91AC9 /* Accounts.framework in Frameworks */,
+				8C2D45A11B859B8800CA9C5A /* FBSDKShareKit.framework in Frameworks */,
 				8CA0D98D1B781E7A00E91AC9 /* libsqlite3.dylib in Frameworks */,
 				8CA0D98B1B781E7300E91AC9 /* libz.dylib in Frameworks */,
 				8CA0D9971B781EF100E91AC9 /* Parse.framework in Frameworks */,
@@ -86,6 +92,7 @@
 				8CA0D97F1B781E2C00E91AC9 /* CoreGraphics.framework in Frameworks */,
 				8CA0D97D1B781E2500E91AC9 /* CFNetwork.framework in Frameworks */,
 				8C0770A81B781DBD005399E9 /* AudioToolbox.framework in Frameworks */,
+				8C2D459F1B859B8000CA9C5A /* FBSDKCoreKit.framework in Frameworks */,
 				8C9A0FA21B663481006F5A81 /* AVFoundation.framework in Frameworks */,
 				8CA0D9961B781EF100E91AC9 /* Bolts.framework in Frameworks */,
 			);
@@ -128,6 +135,7 @@
 				A4F239A31B561B2C00EC1E0C /* Images.xcassets */,
 				A4F239A51B561B2C00EC1E0C /* LaunchScreen.xib */,
 				A4F2399A1B561B2C00EC1E0C /* Supporting Files */,
+				8C2D45AD1B85A4B200CA9C5A /* Bridging.h */,
 			);
 			path = Noice;
 			sourceTree = "<group>";
@@ -135,6 +143,8 @@
 		A4F2399A1B561B2C00EC1E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C2D45A01B859B8800CA9C5A /* FBSDKShareKit.framework */,
+				8C2D459E1B859B8000CA9C5A /* FBSDKCoreKit.framework */,
 				8CA0D9941B781EF100E91AC9 /* Bolts.framework */,
 				8CA0D9951B781EF100E91AC9 /* Parse.framework */,
 				8CA0D9901B781EAF00E91AC9 /* Social.framework */,
@@ -356,6 +366,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -393,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -408,6 +420,7 @@
 				INFOPLIST_FILE = Noice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Noice/Bridging.h;
 			};
 			name = Debug;
 		};
@@ -422,6 +435,7 @@
 				INFOPLIST_FILE = Noice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Noice/Bridging.h;
 			};
 			name = Release;
 		};
