@@ -17,6 +17,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     var pageCount : Int!
     let pageSize : Int = 50
     var hasMoreVideo : Bool!
+    var statusBarView :UIView!
     @IBOutlet weak var videoPlayer: UIWebView!
     @IBOutlet weak var videoTitle: UILabel!
     @IBOutlet weak var videoDescription: UITextView!
@@ -214,7 +215,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         videoDescription.textColor = UIColor(red: 97.0/256.0, green: 97.0/256.0, blue: 97.0/256.0, alpha: 1.0)
         
         //status bar background
-        var statusBarView = UIView()
+        statusBarView = UIView()
         statusBarView.frame = CGRectMake(0,0,view.bounds.size.width,20)
         statusBarView.backgroundColor = UIColor(red: 253.0/256.0, green: 210.0/256.0, blue: 119.0/256.0, alpha: 1.0)
         view.addSubview(statusBarView)
@@ -244,11 +245,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        statusBarView.frame = CGRectMake(0,0,view.bounds.size.width,20)
     }
     
     func playYoutubeVideoWithId(videoId: String) {
