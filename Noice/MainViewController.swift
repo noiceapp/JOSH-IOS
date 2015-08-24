@@ -17,7 +17,10 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     var pageCount : Int!
     let pageSize : Int = 50
     var hasMoreVideo : Bool!
-    var statusBarView :UIView!
+    var statusBarView : UIView!
+    var currentVideoNoice : Int!
+    var currentVideoMeh : Int!
+    var currentVideoBlah : Int!
     @IBOutlet weak var videoPlayer: UIWebView!
     @IBOutlet weak var videoTitle: UILabel!
     @IBOutlet weak var videoDescription: UITextView!
@@ -36,14 +39,11 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.mehButton.selected = false
             self.blabButton.hidden = false
             self.numberOfBlab.hidden = false
-            self.getNumberOfVotesWithVideo(videoObject, completion: {(videos: [PFObject], numberOfNoice: Int, numberOfMeh: Int) -> Void in
-                self.numberOfNoice.text = String("\(numberOfNoice+1) noice")
-                if numberOfMeh > 0 {
-                    self.numberOfMeh.text = String("\(numberOfMeh-1) meh")
-                }
-                self.incrementVote()
-                self.removeDecrementVote()
-            })
+            self.incrementVote()
+            self.removeDecrementVote()
+            
+            self.numberOfNoice.text = String("\(currentVideoNoice) noice")
+            self.numberOfMeh.text = String("\(currentVideoMeh) meh")
         }
     }
     @IBAction func mehButtonDidTouch(sender: UIButton!) {
@@ -52,14 +52,11 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.hahaButton.selected = false
             self.blabButton.hidden = true
             self.numberOfBlab.hidden = true
-            self.getNumberOfVotesWithVideo(videoObject, completion: {(videos: [PFObject], numberOfNoice: Int, numberOfMeh: Int) -> Void in
-                self.numberOfMeh.text = String("\(numberOfMeh+1) meh")
-                if numberOfNoice > 0 {
-                    self.numberOfNoice.text = String("\(numberOfNoice-1) noice")
-                }
-                self.decrementVote()
-                self.removeIncrementVote()
-            })
+            self.decrementVote()
+            self.removeIncrementVote()
+            
+            self.numberOfMeh.text = String("\(currentVideoMeh) meh")
+            self.numberOfNoice.text = String("\(currentVideoNoice) noice")
         }
     }
     @IBAction func blabButtonDidTouch(sender: UIButton!) {
@@ -99,6 +96,13 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
+    func updateButtonLabelText()
+    {
+        self.numberOfNoice.text = String("\(currentVideoNoice) noice")
+        self.numberOfMeh.text = String("\(currentVideoMeh) meh")
+        self.numberOfBlab.text = String("\(currentVideoBlah) blah")
+    }
+    
     func shareVideo()
     {
         self.getNubmerOfShareWithVideo(videoObject, completion: {(numberOfBlab: Int) -> Void in
@@ -114,6 +118,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     
     func incrementVote()
     {
+        currentVideoNoice = currentVideoNoice + 1
         var vote = PFObject(className: "Vote")
         vote["user"] = PFInstallation.currentInstallation()
         vote["value"] = (1)
@@ -130,6 +135,10 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let parseObjects = results as? [PFObject] {
+                    if self.currentVideoNoice > 0 {
+                        self.currentVideoNoice = self.currentVideoNoice - 1
+                    }
+                    self.updateButtonLabelText()
                     for parseObject in parseObjects {
                         parseObject.deleteInBackground()
                     }
@@ -140,6 +149,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     
     func decrementVote()
     {
+        currentVideoMeh = currentVideoMeh + 1
         var vote = PFObject(className: "Vote")
         vote["user"] = PFInstallation.currentInstallation()
         vote["value"] = (-1)
@@ -156,6 +166,10 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let parseObjects = results as? [PFObject] {
+                    if self.currentVideoMeh > 0 {
+                        self.currentVideoMeh = self.currentVideoMeh - 1
+                    }
+                    self.updateButtonLabelText()
                     for parseObject in parseObjects {
                         parseObject.deleteInBackground()
                     }
@@ -218,7 +232,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         statusBarView = UIView()
         statusBarView.frame = CGRectMake(0,0,view.bounds.size.width,20)
         statusBarView.backgroundColor = UIColor(red: 253.0/256.0, green: 210.0/256.0, blue: 119.0/256.0, alpha: 1.0)
-        view.addSubview(statusBarView)
+        view.insertSubview(statusBarView, atIndex: 0)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
@@ -233,7 +247,6 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     {
         if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
             videoPlayer.allowsInlineMediaPlayback = false
-            videoPlayer.frame = view.bounds
             videoPlayer.stringByEvaluatingJavaScriptFromString(("player.pauseVideo();"))
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.05 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                 self.videoPlayer.stringByEvaluatingJavaScriptFromString(("player.playVideo();"))
@@ -324,6 +337,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         self.videoDescription.text = videoObject["description"] as! String
         
         self.getNumberOfVotesWithVideo(videoObject, completion: {(videos: [PFObject], numberOfNoice: Int, numberOfMeh: Int) -> Void in
+            self.currentVideoNoice = numberOfNoice
+            self.currentVideoMeh = numberOfMeh
+            
             self.hahaButton.userInteractionEnabled = true
             self.mehButton.userInteractionEnabled = true
             
@@ -358,6 +374,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         })
         
         self.getNubmerOfShareWithVideo(videoObject, completion: {(numberOfBlab: Int) -> Void in
+            self.currentVideoBlah = numberOfBlab
             if numberOfBlab > 0 {
                 self.numberOfBlab.text = String("\(numberOfBlab) blab")
             }

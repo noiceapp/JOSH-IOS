@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDarkContent</string>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
