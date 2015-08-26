@@ -34,6 +34,8 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     @IBAction func hahaButtonDidTouch(sender: UIButton!) {
         //sender.selected = !sender.selected
         //self.blabButton.selected = true
+        self.incrementVoteWithUpdate()
+        
         if self.hahaButton.selected == false {
             self.hahaButton.selected = true
             self.mehButton.selected = false
@@ -41,13 +43,15 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.numberOfBlab.hidden = false
             //self.incrementVote()
             //self.removeDecrementVote()
-            self.incrementVoteWithUpdate()
+            
             
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
         }
     }
     @IBAction func mehButtonDidTouch(sender: UIButton!) {
+        self.decrementVoteWithUpdate()
+        
         if self.mehButton.selected == false {
             self.mehButton.selected = true
             self.hahaButton.selected = false
@@ -55,7 +59,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.numberOfBlab.hidden = true
             //self.decrementVote()
             //self.removeIncrementVote()
-            self.decrementVoteWithUpdate()
+            
             
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
@@ -121,7 +125,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     func incrementVoteWithUpdate()
     {
         currentVideoNoice = currentVideoNoice + 1
-        if currentVideoMeh > 0  {
+        if currentVideoMeh > 0 && mehButton.selected  {
             currentVideoMeh = currentVideoMeh - 1
         }
         var query = PFQuery(className: "Vote")
@@ -150,7 +154,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     func decrementVoteWithUpdate()
     {
         currentVideoMeh = currentVideoMeh + 1
-        if currentVideoNoice > 0 {
+        if currentVideoNoice > 0 && hahaButton.selected {
             currentVideoNoice = currentVideoNoice - 1
         }
         var query = PFQuery(className: "Vote")
