@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0C182F5898B8C3475043B9 /* libPods-Noice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FE2A59D6DA3AA9C42EE1E4 /* libPods-Noice.a */; };
 		8C0770A81B781DBD005399E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0770A71B781DBD005399E9 /* AudioToolbox.framework */; };
 		8C2D459F1B859B8000CA9C5A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2D459E1B859B8000CA9C5A /* FBSDKCoreKit.framework */; };
 		8C2D45A11B859B8800CA9C5A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2D45A01B859B8800CA9C5A /* FBSDKShareKit.framework */; };
@@ -24,6 +25,7 @@
 		8CA0D9911B781EAF00E91AC9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA0D9901B781EAF00E91AC9 /* Social.framework */; };
 		8CA0D9961B781EF100E91AC9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA0D9941B781EF100E91AC9 /* Bolts.framework */; };
 		8CA0D9971B781EF100E91AC9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA0D9951B781EF100E91AC9 /* Parse.framework */; };
+		8CD5F9C81B8D745D00F539F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CD5F9C71B8D745D00F539F9 /* GoogleService-Info.plist */; };
 		A4F2399D1B561B2C00EC1E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */; };
 		A4F2399F1B561B2C00EC1E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F2399E1B561B2C00EC1E0C /* MainViewController.swift */; };
 		A4F239A21B561B2C00EC1E0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4F239A01B561B2C00EC1E0C /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		714F179A710192BAD73896F5 /* Pods-Noice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noice.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noice/Pods-Noice.release.xcconfig"; sourceTree = "<group>"; };
+		7F0E36BF2987E8FB975D8BDB /* Pods-Noice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noice/Pods-Noice.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0770A71B781DBD005399E9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8C2D459E1B859B8000CA9C5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8C2D45A01B859B8800CA9C5A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		8CA0D9901B781EAF00E91AC9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8CA0D9941B781EF100E91AC9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8CA0D9951B781EF100E91AC9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		8CD5F9C71B8D745D00F539F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4F239971B561B2C00EC1E0C /* Noice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F2399B1B561B2C00EC1E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 		A4F239AC1B561B2C00EC1E0C /* NoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F239B11B561B2C00EC1E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4F239B21B561B2C00EC1E0C /* NoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiceTests.swift; sourceTree = "<group>"; };
+		F1FE2A59D6DA3AA9C42EE1E4 /* libPods-Noice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 				8C2D459F1B859B8000CA9C5A /* FBSDKCoreKit.framework in Frameworks */,
 				8C9A0FA21B663481006F5A81 /* AVFoundation.framework in Frameworks */,
 				8CA0D9961B781EF100E91AC9 /* Bolts.framework in Frameworks */,
+				5D0C182F5898B8C3475043B9 /* libPods-Noice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,12 +115,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05DA9775F0F8194BB060D600 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E36BF2987E8FB975D8BDB /* Pods-Noice.debug.xcconfig */,
+				714F179A710192BAD73896F5 /* Pods-Noice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7D1E7698622EE5446841ED8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1FE2A59D6DA3AA9C42EE1E4 /* libPods-Noice.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A4F2398E1B561B2C00EC1E0C = {
 			isa = PBXGroup;
 			children = (
 				A4F239991B561B2C00EC1E0C /* Noice */,
 				A4F239AF1B561B2C00EC1E0C /* NoiceTests */,
 				A4F239981B561B2C00EC1E0C /* Products */,
+				05DA9775F0F8194BB060D600 /* Pods */,
+				7D1E7698622EE5446841ED8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +155,7 @@
 		A4F239991B561B2C00EC1E0C /* Noice */ = {
 			isa = PBXGroup;
 			children = (
+				8CD5F9C71B8D745D00F539F9 /* GoogleService-Info.plist */,
 				A4F2399C1B561B2C00EC1E0C /* AppDelegate.swift */,
 				A4F2399E1B561B2C00EC1E0C /* MainViewController.swift */,
 				A4F239A01B561B2C00EC1E0C /* Main.storyboard */,
@@ -189,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4F239B61B561B2C00EC1E0C /* Build configuration list for PBXNativeTarget "Noice" */;
 			buildPhases = (
+				915B126BCBF9CC2447B90300 /* Check Pods Manifest.lock */,
 				A4F239931B561B2C00EC1E0C /* Sources */,
 				A4F239941B561B2C00EC1E0C /* Frameworks */,
 				A4F239951B561B2C00EC1E0C /* Resources */,
+				36806D945A6B65B1727B7FA8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F239A21B561B2C00EC1E0C /* Main.storyboard in Resources */,
+				8CD5F9C81B8D745D00F539F9 /* GoogleService-Info.plist in Resources */,
 				A4F239A71B561B2C00EC1E0C /* LaunchScreen.xib in Resources */,
 				A4F239A41B561B2C00EC1E0C /* Images.xcassets in Resources */,
 			);
@@ -277,6 +307,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36806D945A6B65B1727B7FA8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Noice/Pods-Noice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		915B126BCBF9CC2447B90300 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A4F239931B561B2C00EC1E0C /* Sources */ = {
@@ -411,8 +474,10 @@
 		};
 		A4F239B71B561B2C00EC1E0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F0E36BF2987E8FB975D8BDB /* Pods-Noice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Noice",
@@ -421,13 +486,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Noice/Bridging.h;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		A4F239B81B561B2C00EC1E0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 714F179A710192BAD73896F5 /* Pods-Noice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Noice",
@@ -436,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Noice/Bridging.h;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

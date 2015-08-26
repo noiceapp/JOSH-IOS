@@ -10,4 +10,5 @@
 #define Noice_Bridging_h
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import <Google/Analytics.h>
 #endif
