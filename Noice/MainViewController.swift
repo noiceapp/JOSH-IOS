@@ -39,8 +39,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.mehButton.selected = false
             self.blabButton.hidden = false
             self.numberOfBlab.hidden = false
-            self.incrementVote()
-            self.removeDecrementVote()
+            //self.incrementVote()
+            //self.removeDecrementVote()
+            self.incrementVoteWithUpdate()
             
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
@@ -52,8 +53,9 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.hahaButton.selected = false
             self.blabButton.hidden = true
             self.numberOfBlab.hidden = true
-            self.decrementVote()
-            self.removeIncrementVote()
+            //self.decrementVote()
+            //self.removeIncrementVote()
+            self.decrementVoteWithUpdate()
             
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
@@ -116,7 +118,65 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         })
     }
     
-    func incrementVote()
+    func incrementVoteWithUpdate()
+    {
+        currentVideoNoice = currentVideoNoice + 1
+        if currentVideoMeh > 0  {
+            currentVideoMeh = currentVideoMeh - 1
+        }
+        var query = PFQuery(className: "Vote")
+        query.whereKey("user", equalTo: PFInstallation.currentInstallation())
+        query.whereKey("video", equalTo: self.videoObject)
+        query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let parseObjects = results as? [PFObject] {
+                    if parseObjects.count > 0 {
+                        var parseObject : PFObject = parseObjects.first!
+                        parseObject["value"] = (1)
+                        parseObject.saveInBackground()
+                    }
+                    else {
+                        var vote = PFObject(className: "Vote")
+                        vote["user"] = PFInstallation.currentInstallation()
+                        vote["value"] = (1)
+                        vote["video"] = self.videoObject
+                        vote.saveInBackground()
+                    }
+                }
+            }
+        }
+    }
+    
+    func decrementVoteWithUpdate()
+    {
+        currentVideoMeh = currentVideoMeh + 1
+        if currentVideoNoice > 0 {
+            currentVideoNoice = currentVideoNoice - 1
+        }
+        var query = PFQuery(className: "Vote")
+        query.whereKey("user", equalTo: PFInstallation.currentInstallation())
+        query.whereKey("video", equalTo: self.videoObject)
+        query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let parseObjects = results as? [PFObject] {
+                    if parseObjects.count > 0 {
+                        var parseObject : PFObject = parseObjects.first!
+                        parseObject["value"] = (-1)
+                        parseObject.saveInBackground()
+                    }
+                    else {
+                        var vote = PFObject(className: "Vote")
+                        vote["user"] = PFInstallation.currentInstallation()
+                        vote["value"] = (-1)
+                        vote["video"] = self.videoObject
+                        vote.saveInBackground()
+                    }
+                }
+            }
+        }
+    }
+    
+    /*func incrementVote()
     {
         currentVideoNoice = currentVideoNoice + 1
         var vote = PFObject(className: "Vote")
@@ -176,7 +236,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
                 }
             }
         }
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
