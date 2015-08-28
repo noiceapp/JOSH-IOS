@@ -27,6 +27,7 @@ class MainViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var hahaButton: UIButton!
     @IBOutlet weak var mehButton: UIButton!
     @IBOutlet weak var blabButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var numberOfNoice: UILabel!
     @IBOutlet weak var numberOfMeh: UILabel!
     @IBOutlet weak var numberOfBlab: UILabel!
@@ -100,6 +101,10 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         optionMenu.addAction(twitterAction)
         optionMenu.addAction(cancelAction)
         self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButtonDidTouch(sender: UIButton!) {
+        nextVideo()
     }
     
     func updateButtonLabelText()
@@ -297,6 +302,8 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         statusBarView.frame = CGRectMake(0,0,view.bounds.size.width,20)
         statusBarView.backgroundColor = UIColor(red: 253.0/256.0, green: 210.0/256.0, blue: 119.0/256.0, alpha: 1.0)
         view.insertSubview(statusBarView, atIndex: 0)
+        
+        nextButton.layer.cornerRadius = 10.0
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
