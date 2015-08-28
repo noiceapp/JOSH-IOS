@@ -42,13 +42,13 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.mehButton.selected = false
             self.blabButton.hidden = false
             self.numberOfBlab.hidden = false
-            //self.incrementVote()
-            //self.removeDecrementVote()
-            
-            
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
         }
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        let build = GAIDictionaryBuilder.createEventWithCategory("Buttons", action: "Tapped", label: "Haha", value: nil).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     @IBAction func mehButtonDidTouch(sender: UIButton!) {
         self.decrementVoteWithUpdate()
@@ -58,13 +58,13 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             self.hahaButton.selected = false
             self.blabButton.hidden = true
             self.numberOfBlab.hidden = true
-            //self.decrementVote()
-            //self.removeIncrementVote()
-            
-            
             self.numberOfMeh.text = String("\(currentVideoMeh) meh")
             self.numberOfNoice.text = String("\(currentVideoNoice) noice")
         }
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        let build = GAIDictionaryBuilder.createEventWithCategory("Buttons", action: "Tapped", label: "Meh", value: nil).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     @IBAction func blabButtonDidTouch(sender: UIButton!) {
         blabButton.selected = true
@@ -101,10 +101,18 @@ class MainViewController: UIViewController, UIWebViewDelegate {
         optionMenu.addAction(twitterAction)
         optionMenu.addAction(cancelAction)
         self.presentViewController(optionMenu, animated: true, completion: nil)
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        let build = GAIDictionaryBuilder.createEventWithCategory("Buttons", action: "Tapped", label: "Blab", value: nil).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     
     @IBAction func nextButtonDidTouch(sender: UIButton!) {
         nextVideo()
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        let build = GAIDictionaryBuilder.createEventWithCategory("Buttons", action: "Tapped", label: "Next", value: nil).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     
     func updateButtonLabelText()
@@ -125,6 +133,10 @@ class MainViewController: UIViewController, UIWebViewDelegate {
                 shareObject.saveInBackground()
             }
         })
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        let build = GAIDictionaryBuilder.createEventWithCategory("Buttons", action: "Tapped", label: "Share", value: nil).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     
     func incrementVoteWithUpdate()
@@ -184,71 +196,15 @@ class MainViewController: UIViewController, UIWebViewDelegate {
             }
         }
     }
-    
-    /*func incrementVote()
-    {
-        currentVideoNoice = currentVideoNoice + 1
-        var vote = PFObject(className: "Vote")
-        vote["user"] = PFInstallation.currentInstallation()
-        vote["value"] = (1)
-        vote["video"] = self.videoObject
-        vote.saveInBackground()
-    }
-    
-    func removeIncrementVote()
-    {
-        var query = PFQuery(className: "Vote")
-        query.whereKey("user", equalTo: PFInstallation.currentInstallation())
-        query.whereKey("value", equalTo: (1))
-        query.whereKey("video", equalTo: self.videoObject)
-        query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let parseObjects = results as? [PFObject] {
-                    if self.currentVideoNoice > 0 {
-                        self.currentVideoNoice = self.currentVideoNoice - 1
-                    }
-                    self.updateButtonLabelText()
-                    for parseObject in parseObjects {
-                        parseObject.deleteInBackground()
-                    }
-                }
-            }
-        }
-    }
-    
-    func decrementVote()
-    {
-        currentVideoMeh = currentVideoMeh + 1
-        var vote = PFObject(className: "Vote")
-        vote["user"] = PFInstallation.currentInstallation()
-        vote["value"] = (-1)
-        vote["video"] = self.videoObject
-        vote.saveInBackground()
-    }
-    
-    func removeDecrementVote()
-    {
-        var query = PFQuery(className: "Vote")
-        query.whereKey("user", equalTo: PFInstallation.currentInstallation())
-        query.whereKey("value", equalTo: (-1))
-        query.whereKey("video", equalTo: self.videoObject)
-        query.findObjectsInBackgroundWithBlock {(results: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let parseObjects = results as? [PFObject] {
-                    if self.currentVideoMeh > 0 {
-                        self.currentVideoMeh = self.currentVideoMeh - 1
-                    }
-                    self.updateButtonLabelText()
-                    for parseObject in parseObjects {
-                        parseObject.deleteInBackground()
-                    }
-                }
-            }
-        }
-    }*/
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "VideoScreen")
+        
+        var builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
         
         //this line is here to stop a weird web view crash http://stackoverflow.com/questions/29458788/uiwebview-webthread-exc-bad-access
         UIView.setAnimationsEnabled(false)
